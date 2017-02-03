@@ -35,6 +35,9 @@ public class Calculateur {
 					return true;
 					break;
 				case "sqrt" :
+					if(sommet()<0){
+						return false;
+					}
 					if(this.racineCarre())
 					return true;
 					break;

@@ -40,18 +40,21 @@ public class Entrees {
 	public void entree(){
 
 		Scanner sc = new Scanner(System.in);
+		System.out.println("les opérateurs accéptés sont les suivants '+','-','/','*','sqrt','carré','sin','tan','cos','inv','op','puiss'.");
+		System.out.println("'trace' pour activer le mode trace\n'notrace' pour le désactiver\n'sommet' pour afficher le sommet de la pile\n'pile' pour afficher la pile\n'stop'\n'help'pour afficher la liste des commandes");
 		
 		while(!stop){
 			String str = sc.nextLine();
 			if(!isCommande(str)){
 				if(!calc.recevoir(str)){
-					System.out.println("Erreur, votre chaine de caractère est incorrecte");
+					System.out.println("Erreur, votre chaine de caractère est incorrecte ou le calcul que vous tentez de faire est 'impossible'(exemple division par 0).");
 				}
 			}
 			if(trace){
 				System.out.println(calc);
 			}
 		}
+		sc.close();
 	}
 	
 
