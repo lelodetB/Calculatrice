@@ -19,43 +19,56 @@ public class Calculateur {
 		else{
 			switch(str){
 				case "+" :
-					this.plus();
+					if(this.plus())
+						return true;
 					break;
 				case "-" :
-					this.moin();
+					if(this.moin())
+					return true;
 					break;
 				case "/" :
-					this.diviser();
+					if(this.diviser())
+					return true;
 					break;
 				case "*" :
-					this.multiplier();
+					if(this.multiplier())
+					return true;
 					break;
 				case "sqrt" :
-					this.racineCarre();
+					if(this.racineCarre())
+					return true;
 					break;
 				case "carré" :
-					this.carre();
+					if(this.carre())
+					return true;
 					break;
 				case "sin" :
-					this.sin();
+					if(this.sin())
+					return true;
 					break;
 				case "tan" :
-					this.tan();
+					if(this.tan())
+					return true;
 					break;
 				case "cos" :
-					this.cos();
+					if(this.cos())
+					return true;
 					break;
 				case "inv" :
-					this.inv();
+					if(this.inv())
+					return true;
 					break;
 				case "op" :
-					this.op();
+					if(this.op())
+					return true;
 					break;
 				case "puiss" :
-					this.puiss();
+				if(this.puiss())
+					return true;
 					break;/*
 				case "!" :
-					this.fact();
+					this.fact())
+						return true;
 					break;*/	
 					
 			}
