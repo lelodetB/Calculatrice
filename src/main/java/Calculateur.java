@@ -87,7 +87,6 @@ public class Calculateur {
 	public boolean empiler(String str){
 		try{
 			this.pile.add(Double.parseDouble(str));
-			System.out.println("empilage réussi, taille de la pile : "+ pile.size());
 			return true;
 		}
 		catch(Exception e){
@@ -242,6 +241,7 @@ public class Calculateur {
 			Double a = pile.get(pile.size()-1);
 			Double b = pile.get(pile.size()-2);
 			Double c =  Math.pow(b, a) ;
+			pile.remove(pile.size()-1);
 			pile.remove(pile.size()-1);
 			pile.add(c);
 			return true;
