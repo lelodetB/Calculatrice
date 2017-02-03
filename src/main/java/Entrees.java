@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
 public class Entrees {
-	public static final String[] COMMANDE = {"trace","notrace","sommet","pile", "stop","help" };
+	public static final String[] COMMANDE = {"trace","notrace","sommet","pile", "stop","help" }; // liste des commandes disponnibles
 
-	public static boolean trace = true;
-	public static boolean stop = false;
+	public static boolean trace = true;  // mode trace (affiche la pile à chaque étape)
+	public static boolean stop = false;  // condition d'arret du programme 
 	
 	Calculateur calc;
 	public static void main(String[] args) {
@@ -15,21 +15,21 @@ public class Entrees {
 	
 	public Entrees(String[] args){
 		calc=new Calculateur ();
-		if(!(args.length == 0)){
-			if(!evaluer(args[0].toLowerCase()) ){
+		if(!(args.length == 0)){ // si il y a un paramètre
+			if(!evaluer(args[0].toLowerCase()) ){  //on essaye de d'évaluer la chaine de caractères 
 			System.out.println("votre calcul est éronné");	
 			}
 		}
 		else{
-			entree();
+			entree(); // si'l n'y a pas de paramètres on lance le mode entrée 
 		}
 	}
 	
-	public boolean evaluer(String arg){
-		String[] calcul = arg.split(" "); 
-		for(int i=0;i<calcul.length;i++){
+	public boolean evaluer(String arg){  
+		String[] calcul = arg.split(" "); // on sépare la chaine de caratères en sous chaines qui sont séparés par ' '  
+		for(int i=0;i<calcul.length;i++){ 
 			System.out.println(calcul[i]);
-			if(!calc.recevoir(calcul[i])){
+			if(!calc.recevoir(calcul[i])){ // on envoie chaque sous chaine au calculateur
 				return false;
 			}
 		}
@@ -44,13 +44,13 @@ public class Entrees {
 		System.out.println("'trace' pour activer le mode trace\n'notrace' pour le désactiver\n'sommet' pour afficher le sommet de la pile\n'pile' pour afficher la pile\n'stop'\n'help'pour afficher la liste des commandes");
 		
 		while(!stop){
-			String str = sc.nextLine().toLowerCase();
-			if(!isCommande(str)){
+			String str = sc.nextLine().toLowerCase(); // lecture d'une chaine de caractère et passage de chaque caractère en minuscule 
+			if(!isCommande(str)){ // si cette chaine n'est pas une commande on l'envoie au calculateur
 				if(!calc.recevoir(str)){
 					System.out.println("Erreur, votre chaine de caractère est incorrecte ou le calcul que vous tentez de faire est 'impossible'(exemple division par 0).");
 				}
 			}
-			if(trace){
+			if(trace){ // si le mode trace est activé
 				System.out.println(calc);
 			}
 		}
@@ -58,7 +58,7 @@ public class Entrees {
 	}
 	
 
-	public boolean isCommande(String str){
+	public boolean isCommande(String str){ // test si la chaine est une commande, si c'est le cas execute la commande
 		for(int i=0;i<COMMANDE.length;i++){
 			if(str.equals(COMMANDE[i])){
 				switch(str){
