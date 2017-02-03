@@ -16,7 +16,7 @@ public class Entrees {
 	public Entrees(String[] args){
 		calc=new Calculateur ();
 		if(!(args.length == 0)){
-			if(!evaluer(args[0]) ){
+			if(!evaluer(args[0].toLowerCase()) ){
 			System.out.println("votre calcul est éronné");	
 			}
 		}
@@ -44,7 +44,7 @@ public class Entrees {
 		System.out.println("'trace' pour activer le mode trace\n'notrace' pour le désactiver\n'sommet' pour afficher le sommet de la pile\n'pile' pour afficher la pile\n'stop'\n'help'pour afficher la liste des commandes");
 		
 		while(!stop){
-			String str = sc.nextLine();
+			String str = sc.nextLine().toLowerCase();
 			if(!isCommande(str)){
 				if(!calc.recevoir(str)){
 					System.out.println("Erreur, votre chaine de caractère est incorrecte ou le calcul que vous tentez de faire est 'impossible'(exemple division par 0).");

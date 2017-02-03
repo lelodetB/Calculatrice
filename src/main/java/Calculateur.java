@@ -4,20 +4,20 @@ public class Calculateur {
 	
 	public ArrayList<Double> pile;
 	
-	private final String[] OPERATEUR = {"+","-","/","*","sqrt","carré","sin","tan","cos","inv","op","puiss"/*,"!"*/};
+	private final String[] OPERATEUR = {"+","-","/","*","sqrt","carré","sin","tan","cos","inv","op","puiss"/*,"!"*/}; // liste des opérateurs disponibles dans le calculateur
 	
 	public Calculateur(){
-		this.pile = new ArrayList<Double>();
+		this.pile = new ArrayList<Double>(); // création de la pile
 		
 	}
 	public boolean recevoir(String str){
-		if(!isOperateur(str)){
-			if(empiler(str)){
+		if(!isOperateur(str)){ // si la chaine recue n'est pas un opérateur
+			if(empiler(str)){ // on tente de l'empiler
 				return true;
 			}
 		}
 		else{
-			switch(str){
+			switch(str){ // si la chaine est un opérateur on trouve lequel, et lance le calcule
 				case "+" :
 					if(this.plus())
 						return true;
@@ -79,7 +79,7 @@ public class Calculateur {
 		return false;
 	}
 	
-	public boolean isOperateur(String str){
+	public boolean isOperateur(String str){ // méthode pour tester si une chaine est un opérateur valide 
 		for(int i=0;i<OPERATEUR.length;i++){
 			if(str.equals(OPERATEUR[i])){
 				return true;
@@ -87,7 +87,8 @@ public class Calculateur {
 		}
 		return false;
 	}
-	public boolean empiler(String str){
+	
+	public boolean empiler(String str){ // on tente de convertire la chaine de caractère en Double, puis de l'empiler
 		try{
 			this.pile.add(Double.parseDouble(str));
 			return true;
@@ -97,6 +98,13 @@ public class Calculateur {
 			return false;
 		}
 	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////
+	// les méthodes de calcules suivantes                                                //
+	// récupèrent dans la pile le nombre d'opérandes nécessaire à l'opération,           //
+	// tentent d'effectuer l'opération demandée ,                                        //
+	// puis si cela réussi, supprimment les opérandes de la pile puis empile le résultat.//
+	///////////////////////////////////////////////////////////////////////////////////////
 	
 	public boolean plus(){
 		try{
@@ -265,10 +273,11 @@ public class Calculateur {
 			return false;
 		}
 	}*/
-	public Double sommet(){
+	public Double sommet(){ // retourne le sommet de la pile
 		return pile.get(pile.size()-1);
 	}
-	public String toString(){
+	
+	public String toString(){ //affiche le contenue de la pile
 		String str="";
 		for(int i=0;i<=pile.size()-1;i++){
 			str += "+--------";
